@@ -25,15 +25,15 @@ flowchart TD
 
     subgraph API Gateway Layer / FastAPI
         API[FastAPI Application Backend]
-        DOC_ROUTER[/documents Endpoints]
-        QUERY_ROUTER[/query Endpoint]
-        AI_ROUTER[/ai/chat Gateway Endpoint]
+        DOC_ROUTER["/documents Endpoints"]
+        QUERY_ROUTER["/query Endpoint"]
+        AI_ROUTER["/ai/chat Gateway Endpoint"]
     end
 
     subgraph Processing & Ingestion Services
         INGEST[Ingestion Service]
         PDF_PARSER[PDF Parser pypdf]
-        CODE_PARSER[AST / Line Code Chunker]
+        CODE_PARSER["AST / Line Code Chunker"]
         BS4_SCRAPER[BeautifulSoup4 Web Scraper]
         EMBED_SVC[SentenceTransformers local all-MiniLM-L6-v2]
     end
