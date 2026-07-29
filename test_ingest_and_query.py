@@ -109,7 +109,7 @@ def test_ai_gateway():
     print("="*60)
     
     payload = {
-        "prompt": "How does the DecayProxyRotator handle proxy penalties and score recovery?",
+        "question": "How does the DecayProxyRotator handle proxy penalties and score recovery?",
         "top_k": 3
     }
     res = requests.post(f"{BASE_URL}/ai/chat", json=payload)

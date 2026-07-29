@@ -234,7 +234,7 @@ Audit log collection tracking natural language queries, response latency, and re
 - **Request Body**:
 ```json
 {
-  "prompt": "How does the DecayProxyRotator handle proxy penalties and score recovery?",
+  "question": "How does the DecayProxyRotator handle proxy penalties and score recovery?",
   "top_k": 3
 }
 ```

@@ -105,7 +105,7 @@ class RAGService:
         """
         start_time = time.time()
         query_req = QueryRequest(
-            query=request.prompt,
+            query=request.question,
             top_k=request.top_k,
             filters=request.filters,
             enable_reranking=True
@@ -122,7 +122,7 @@ class RAGService:
                 try:
                     # Keep context safe under the model's 512-token limit
                     safe_context = context_str[:1500]
-                    prompt = f"Question: {request.prompt}. Answer this question using only the following context: {safe_context}"
+                    prompt = f"Question: {request.question}. Answer this question using only the following context: {safe_context}"
                     
                     response = llm(prompt, max_length=150, num_return_sequences=1, temperature=0.3, repetition_penalty=1.1)
                     synthesized_answer = response[0]['generated_text']
@@ -132,14 +132,14 @@ class RAGService:
                     synthesized_answer = (
                         f"[LOCAL LLM GENERATION FAILED]\n\n"
                         f"Based on the internal knowledge repository, here is the technical summary for your query:\n\n"
-                        f"{self._summarize_context(request.prompt, search_res.results)}\n\n"
+                        f"{self._summarize_context(request.question, search_res.results)}\n\n"
                     )
                     model_used = "Fallback Context Extractor"
             else:
                 synthesized_answer = (
                     f"Based on the internal knowledge repository, here is the technical summary for your query:\n\n"
                     f"Key Insights:\n"
-                    f"{self._summarize_context(request.prompt, search_res.results)}\n\n"
+                    f"{self._summarize_context(request.question, search_res.results)}\n\n"
                 )
                 model_used = "Internal-RAG-Gateway (Extraction)"
         elif search_res.results:

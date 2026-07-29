@@ -14,8 +14,8 @@ async def ai_gateway_chat(request: AIGatewayRequest):
     Centralized AI Gateway Endpoint for Internal Developers.
     Retrieves semantically relevant document & code context and returns formatted AI synthesis.
     """
-    if not request.prompt.strip():
-        raise HTTPException(status_code=400, detail="Prompt cannot be empty.")
+    if not request.question.strip():
+        raise HTTPException(status_code=400, detail="Question cannot be empty.")
 
     try:
         response = rag_service.generate_ai_gateway_answer(request)

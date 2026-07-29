@@ -34,7 +34,7 @@ class QueryResponse(BaseModel):
     execution_time_ms: float
 
 class AIGatewayRequest(BaseModel):
-    prompt: str = Field(..., description="User prompt or question")
+    question: str = Field(..., description="User question")
     top_k: int = Field(default=5, description="Number of context chunks to fetch")
     filters: Optional[MetadataFilter] = None
     system_instructions: Optional[str] = "You are an AI Assistant serving as an internal knowledge platform guide."
