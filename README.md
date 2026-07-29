@@ -313,9 +313,3 @@ Open a new terminal tab and run:
 ```bash
 python test_ingest_and_query.py
 ```
-
-This test script automatically:
-1. Ingests `Knowledge_Base_Sample (2).pdf` via `POST /documents/upload`
-2. Ingests `Source_Code_Sample (2).py` via `POST /documents/upload`
-3. Queries natural language questions regarding `DecayProxyRotator` and document specifications.
-4. Synthesizes an answer via the centralized AI Gateway!
